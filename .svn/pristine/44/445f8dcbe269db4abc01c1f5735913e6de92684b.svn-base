@@ -1,0 +1,16 @@
+package com.wg.screen.meeting.controller;
+
+import com.jfinal.core.Controller;
+
+/**
+ * 
+ * @description 会议模块
+ * @author ZSJ
+ * @date 2019年7月11日
+ */
+public class MeetingController extends Controller {
+
+	public void index() {
+		renderJson("1231");
+	}
+}

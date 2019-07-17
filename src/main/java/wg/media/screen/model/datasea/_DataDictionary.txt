@@ -1,0 +1,122 @@
+Table: follow
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ f_id       | INT(10)      | NO   | PRI |         | 主键id    
+ user_id    | INT(10)      | YES  |     |         | 被关注者id  
+ follows    | VARCHAR(255) | YES  |     |         | 粉丝id，用中英文逗号隔开
+ createtime | DATETIME(26) | YES  |     |         | 创建时间    
+ updatetime | DATETIME(26) | YES  |     |         | 更新时间    
+------------+--------------+------+-----+---------+---------
+
+Table: food
+------------------+--------------+------+-----+---------+---------
+ Field            | Type         | Null | Key | Default | Remarks 
+------------------+--------------+------+-----+---------+---------
+ id               | INT(10)      | NO   | PRI |         | 食材id    
+ typeFirstId      | INT(10)      | YES  |     |         | 食材一级分类Id
+ typeSecondId     | INT(10)      | YES  |     |         | 食材二级分类ID
+ name             | VARCHAR(255) | YES  |     |         | 食材名称    
+ alias            | VARCHAR(255) | YES  |     |         | 别名      
+ imgUrl           | VARCHAR(255) | YES  |     |         | 图片链接    
+ description      | TEXT(65535)  | YES  |     |         | 食材描述    
+ taboos           | TEXT(65535)  | YES  |     |         | 禁忌人群    
+ suitable         | TEXT(65535)  | YES  |     |         | 适宜人群    
+ effect           | TEXT(65535)  | YES  |     |         | 功效和作用   
+ nutritionalValue | TEXT(65535)  | YES  |     |         | 营养价值    
+ howToSelect      | TEXT(65535)  | YES  |     |         | 如何挑选    
+ howToStore       | TEXT(65535)  | YES  |     |         | 如何存储    
+ howToEating      | TEXT(65535)  | YES  |     |         | 食用方法    
+ restraint        | TEXT(65535)  | YES  |     |         | 相克  ;;分隔多值
+ useful           | TEXT(65535)  | YES  |     |         | 宜搭  ;;分隔多值
+ sort             | INT(10)      | YES  |     |         | 排序      
+ linkUrl          | VARCHAR(255) | YES  |     |         | 香哈菜谱链接地址
+------------------+--------------+------+-----+---------+---------
+
+Table: foodTypeFirst
+-------+--------------+------+-----+---------+---------
+ Field | Type         | Null | Key | Default | Remarks 
+-------+--------------+------+-----+---------+---------
+ id    | INT(10)      | NO   | PRI |         |         
+ name  | VARCHAR(100) | YES  |     |         | 一级食材类型名 
+ sort  | INT(10)      | YES  |     |         |         
+-------+--------------+------+-----+---------+---------
+
+Table: foodTypeSecond
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ id          | INT(10)      | NO   | PRI |         |         
+ typeFirstId | INT(10)      | YES  |     |         | 一级食材ID  
+ name        | VARCHAR(100) | YES  |     |         | 二级食材名称  
+ sort        | INT(10)      | YES  |     |         |         
+-------------+--------------+------+-----+---------+---------
+
+Table: menu
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ id           | INT(10)      | NO   | PRI |         |         
+ typeFirstId  | INT(10)      | YES  |     |         | 菜谱一级分类ID
+ typeSecondId | INT(10)      | YES  |     |         | 菜谱二级分类ID
+ name         | VARCHAR(255) | YES  |     |         | 菜谱名     
+ imgUrl       | VARCHAR(255) | YES  |     |         | 图片链接    
+ vedioUrl     | VARCHAR(255) | YES  |     |         | 视频链接    
+ description  | TEXT(65535)  | YES  |     |         | 菜单描述    
+ author       | VARCHAR(255) | YES  |     |         | 作者姓名    
+ authorId     | VARCHAR(255) | YES  |     |         | 作者ID    
+ tags         | VARCHAR(255) | YES  |     |         | 标签（;;分隔）
+ typeIds      | VARCHAR(255) | YES  |     |         | 菜谱类型集合，用;分隔
+ useTime      | VARCHAR(255) | YES  |     |         | 制作时间    
+ material     | VARCHAR(255) | YES  |     |         | 食材（食材@@分量@@食材Id）
+ stepImgs     | VARCHAR(255) | YES  |     |         | 步骤图片地址，;;分隔
+ stepText     | VARCHAR(255) | YES  |     |         | 步骤文本内容，;;分隔(一个图片对应一个文本内容）
+ tips         | VARCHAR(255) | YES  |     |         | 小贴士     
+ visits       | INT(10)      | YES  |     |         | 浏览次数    
+ collections  | INT(10)      | YES  |     |         | 收藏次数    
+ linkUrl      | VARCHAR(255) | YES  |     |         | 香哈菜谱链接地址
+ addTime      | VARCHAR(50)  | YES  |     |         |         
+ updateTime   | VARCHAR(50)  | YES  |     |         |         
+--------------+--------------+------+-----+---------+---------
+
+Table: menuTypeFirst
+-------+--------------+------+-----+---------+---------
+ Field | Type         | Null | Key | Default | Remarks 
+-------+--------------+------+-----+---------+---------
+ id    | INT(10)      | NO   | PRI |         |         
+ name  | VARCHAR(100) | YES  |     |         | 一级菜单类型名 
+ sort  | INT(10)      | YES  |     |         |         
+-------+--------------+------+-----+---------+---------
+
+Table: menuTypeSecond
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ id          | INT(10)      | NO   | PRI |         |         
+ typeFirstId | INT(10)      | YES  |     |         | 一级菜单ID  
+ name        | VARCHAR(100) | YES  |     |         | 二级菜单名称  
+ sort        | INT(10)      | YES  |     |         |         
+-------------+--------------+------+-----+---------+---------
+
+Table: user
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ user_id    | INT(10)      | NO   | PRI |         | 用户ID    
+ role       | INT(10)      | YES  |     |         | 用户角色(0管理员1普通会员2vip)
+ user_name  | VARCHAR(255) | YES  |     |         | 用户名     
+ password   | VARCHAR(255) | YES  |     |         | 密码      
+ icon       | VARCHAR(255) | YES  |     |         | 头像      
+ native     | VARCHAR(255) | YES  |     |         | 籍贯      
+ city       | VARCHAR(255) | YES  |     |         | 居住城市    
+ sex        | VARCHAR(255) | YES  |     |         | 性别（0男1女）
+ email      | VARCHAR(255) | YES  |     |         | 邮箱      
+ nation     | VARCHAR(255) | YES  |     |         | 名族      
+ birth      | VARCHAR(255) | YES  |     |         | 生日      
+ mobile     | VARCHAR(255) | YES  |     |         | 联系电话    
+ createtime | DATETIME(26) | YES  |     |         | 创建时间    
+ lon        | VARCHAR(255) | YES  |     |         | 经度      
+ lat        | VARCHAR(255) | YES  |     |         | 纬度      
+ status     | VARCHAR(255) | YES  |     |         | 状态（0正常1注销2冻结）
+------------+--------------+------+-----+---------+---------
+

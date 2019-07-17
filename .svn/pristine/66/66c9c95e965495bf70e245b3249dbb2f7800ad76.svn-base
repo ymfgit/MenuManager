@@ -1,0 +1,7 @@
+devMode = true
+jdbc.ip.datasea=192.168.16.112:3306
+jdbc.db.datasea=meeting_manage
+jdbc.map.datasea=com.wg.screen.model._MappingKit
+jdbc.username.datasea=sprint01
+jdbc.password.datasea=Sprint02@mysql
+system.code=1

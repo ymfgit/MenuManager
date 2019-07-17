@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>meetingManage</groupId>
+  <artifactId>meetingManage</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>meetingManage Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- 添加jfinal依赖 -->
+         <dependency>
+            <groupId>com.jfinal</groupId>
+             <artifactId>jfinal</artifactId>
+             <version>3.8</version>
+         </dependency>
+        <!-- 添加jetty server依赖 -->
+         <dependency>
+             <groupId>com.jfinal</groupId>
+             <artifactId>jetty-server</artifactId>
+             <version>2019.3</version>
+             <!-- 使用IDEA开发时，scope设置成为compile，否则提示缺少jar包，打包时记得要改回 provided -->
+             <scope>provided</scope>
+         </dependency>
+         <!-- mysql驱动 -->
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>8.0.11</version>
+         </dependency>
+         <!-- druid连接池 -->
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>1.0.29</version>
+         </dependency>
+    	<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.23</version>
+		</dependency>
+  </dependencies>
+  <build>
+    <finalName>meetingManage</finalName>
+  </build>
+</project>
