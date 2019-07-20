@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
+import com.mysql.cj.xdevapi.JsonArray;
 import com.wg.screen.meeting.service.FoodService;
 import com.wg.screen.meeting.service.impl.FoodServiceImpl;
 
@@ -25,6 +26,10 @@ public class FoodController extends Controller {
 	 */
 	public void getFoodType() {
 		List<Record> list = foodService.getFoodTypeList();
+		JsonArray jsonArray = new JsonArray();
+		for (Record record : list) {
+			
+		}
 		
 		renderJson(list);
 	}
