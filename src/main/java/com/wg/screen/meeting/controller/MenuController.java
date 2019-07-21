@@ -23,4 +23,9 @@ public class MenuController extends Controller {
 		List<Record> menuList = menuService.getMenuList();
 		renderJson(menuList);
 	}
+	
+	/**
+	 * 根据食材名称获取菜单
+	 */
+	
 }

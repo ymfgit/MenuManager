@@ -21,7 +21,7 @@ public class WebConfig extends JFinalConfig {
 	@Override
 	public void configConstant(Constants me) {
 		InitDb.init();
-		me.setDevMode(prop.getBoolean("devMode", false));
+		me.setDevMode(prop.getBoolean("devMode", true));
 		me.setEncoding("UTF-8");
 		me.setError401View("/login.html");
 		me.setError403View("/login.html");

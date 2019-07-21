@@ -1,10 +1,7 @@
 package com.wg.screen.meeting.controller;
 
-import java.util.List;
-
+import com.alibaba.fastjson.JSONArray;
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.activerecord.Record;
-import com.mysql.cj.xdevapi.JsonArray;
 import com.wg.screen.meeting.service.FoodService;
 import com.wg.screen.meeting.service.impl.FoodServiceImpl;
 
@@ -24,13 +21,9 @@ public class FoodController extends Controller {
 	/**
 	 * 食材大全
 	 */
-	public void getFoodType() {
-		List<Record> list = foodService.getFoodTypeList();
-		JsonArray jsonArray = new JsonArray();
-		for (Record record : list) {
-			
-		}
+	public void getFoodInfo() {
+		JSONArray object = foodService.getFoodInfo();
 		
-		renderJson(list);
+		renderJson(object);
 	}
 }
