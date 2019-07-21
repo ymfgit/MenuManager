@@ -8,6 +8,8 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.wg.screen.meeting.service.FoodService;
 
+import wg.media.screen.model.datasea.FoodTypeFirst;
+
 public class FoodServiceImpl implements FoodService{
 
 	/**
@@ -36,16 +38,57 @@ public class FoodServiceImpl implements FoodService{
 		return array;
 		
 	}
-	public static void main(String[] args) {
-		JSONObject obj = new JSONObject();
-		JSONArray array = new JSONArray();
-		JSONObject object = new JSONObject();
-		object.put("猪肉", "猪肝");
-		object.put("猪肉", "猪腿");
-		object.put("猪肉", "猪肠");
-		array.add(object);
-		obj.put("肉类", array);
+	
+	/**
+	 * 添加一级食材
+	 */
+	@Override
+	public JSONObject addFoodTypeFirst(JSONObject obj) {
+		FoodTypeFirst typeFirst = new FoodTypeFirst();
+		typeFirst.setName(obj.getString("name"));
+		typeFirst.setSort(obj.getInteger("sort"));
 		
-		System.out.println(obj);
+		boolean result = typeFirst.save();
+		JSONObject object = new JSONObject();
+		if (result) {
+			object.put("result", "success");
+		} else {
+			object.put("result", "fail");
+		}
+		return object;
+	}
+
+	/**
+	 * 删除一级食材
+	 */
+	@Override
+	public JSONObject deleteFoodTypeFirst(String id) {
+		boolean result = FoodTypeFirst.dao.deleteById(id);
+		JSONObject object = new JSONObject();
+		if (result) {
+			object.put("result", "success");
+		} else {
+			object.put("result", "fail");
+		}
+		return object;
+	}
+
+	/**
+	 * 更新一级食材
+	 */
+	@Override
+	public JSONObject updateFoodTypeFirst(JSONObject obj) {
+		FoodTypeFirst typeFirst = FoodTypeFirst.dao.findById(obj.getInteger("id"));
+		typeFirst.setName(obj.getString("name"));
+		typeFirst.setSort(obj.getInteger("sort"));
+		
+		boolean result = typeFirst.update();
+		JSONObject object = new JSONObject();
+		if (result) {
+			object.put("result", "success");
+		} else {
+			object.put("result", "fail");
+		}
+		return object;
 	}
 }
